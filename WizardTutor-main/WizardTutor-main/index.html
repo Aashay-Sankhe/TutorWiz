@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Map with Markers</title>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv9fFaDM2JKqPsLHKpkvk7pTJiAi2KsLU&callback=initMap"
+      async
+      defer
+    ></script>
+    <script>
+      let map;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: 0, lng: 0 },
+          zoom: 2, // Adjust the zoom level as needed
+        });
+
+        // Example data array
+        const coordinatesArray = [
+          [40.7128, -74.006], // New York City
+          [34.0522, -118.2437], // Los Angeles
+          [51.5074, -0.1278], // London
+          // Add more coordinates as needed
+        ];
+
+        // Loop through the array and add markers
+        for (const coordinates of coordinatesArray) {
+          const marker = new google.maps.Marker({
+            position: { lat: coordinates[0], lng: coordinates[1] },
+            map: map,
+            title: "Location",
+          });
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="map" style="height: 400px; width: 100%"></div>
+  </body>
+</html>
